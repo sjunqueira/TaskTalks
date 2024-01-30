@@ -2,7 +2,7 @@ import { AppBar, Box, Container, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import ResponsiveAppBar from "@/pages/components/AppBar/ResponsiveAppBar"
 import { Sidebar } from "@/pages/components/Forum/Sidebar/SideBar"
-import { Main } from "@/pages/components/Forum/Main/Main"
+import { Main } from "@/pages/components/Forum/Main/MainComponent"
 
 export default function Forum() {
   const {query} = useRouter()

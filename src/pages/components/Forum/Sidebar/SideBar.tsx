@@ -1,7 +1,7 @@
 import { Avatar, Button } from '@mui/material'
 import Box from '@mui/material/Box'
 
-import { Edit, GitHub, Instagram, LinkedIn } from '@mui/icons-material'
+import { Edit, EditOutlined, GitHub, Instagram, LinkedIn } from '@mui/icons-material'
 import { Container } from '@mui/system'
 
 export function Sidebar() {
@@ -14,7 +14,7 @@ export function Sidebar() {
         objectFit: 'cover',
         borderRadius: '8px',
         flexDirection: 'column',
-        maxHeight: '15rem',
+        maxHeight: '18rem',
         maxWidth: '20rem',
 
         }}>
@@ -58,10 +58,17 @@ export function Sidebar() {
             <Button><LinkedIn/></Button>
             <Button><Instagram/></Button>
           </Box>
+        
         </Box>
         </Box>
       
-
+      <Button variant='contained' sx={{
+        width: 1,
+        p: '1rem',
+        my: '0.5rem',
+        borderRadius:3
+        }}>
+        Criar novo post</Button>
       </Box>
       </Container>
     )
