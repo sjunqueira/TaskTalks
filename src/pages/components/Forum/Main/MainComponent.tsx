@@ -5,7 +5,9 @@ import Box from '@mui/material/Box'
 import { useState } from 'react'
 import { Comment } from './CommentComponent'
 
-export function Main() {
+export function Main({author, content}) {
+
+  
   const [comments, setComments] = useState([]) // Const que tem os comentários (comments) e também tem um "listener" que está dentro de uma function (handleCreateNewComment)
   const [newCommentText, setNewCommentText] = useState('') 
   
@@ -87,7 +89,7 @@ export function Main() {
               //justifyContent: 'center',
               //alignItems: 'center'
             }}>
-              <Typography>DJ do Rock</Typography>
+              <Typography>{author}</Typography>
               <Typography variant='caption' sx={{
                 color: '#8d8d89',
               }}>FullStack Developer</Typography>
@@ -99,7 +101,7 @@ export function Main() {
             mt: '1rem',
             lineHeight: '1.6rem',
             fontWeight: 'regular'
-            }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus orci ac auctor augue mauris augue neque. Cursus risus at ultrices mi. Tortor vitae purus faucibus ornare suspendisse sed. Turpis egestas pretium aenean pharetra magna ac placerat. In fermentum et sollicitudin ac. Vitae congue eu consequat ac felis donec. Platea dictumst quisque sagittis purus sit. Nisi lacus sed viverra tellus in hac. Mi sit amet mauris commodo quis imperdiet massa. Non tellus orci ac auctor augue mauris. At auctor urna nunc id. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Viverra nibh cras pulvinar mattis nunc sed blandit.
+            }}>{content}
             </Typography>
           </Box>
           <Grid container sx={{

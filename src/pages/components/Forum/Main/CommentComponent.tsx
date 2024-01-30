@@ -1,7 +1,7 @@
-import { Avatar, Box, Button, Typography } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Typography } from '@mui/material'
 import styles from './comment.module.css'
 import { useState } from 'react'
-import { Circle, Delete, ThumbsUpDown } from '@mui/icons-material'
+import { Circle, Delete, ThumbDown, ThumbUp } from '@mui/icons-material'
 
 
 export function Comment ( {id, content, onDeleteComment, commentDate} ) {
@@ -79,32 +79,48 @@ export function Comment ( {id, content, onDeleteComment, commentDate} ) {
                             <Typography sx={{
                                 display: 'block',
                                 fontSize: '0.75rem',
-                                lineHeight: '1.4'
+                                lineHeight: '1.4',
+                                color: '#8d8d89'
                             }}>
                             2023-09-01 17:00:00
                             </Typography>
                         </Box>
-                        <Button 
+                        
+                        <IconButton 
                             onClick={handleDeleteComment} 
                             onDeleteComment={deleteComment} 
-                            title='Deletar comentário'>
+                            title='Deletar comentário'
+                            color='primary'>
                             <Delete/>
-                        </Button>
+                        </IconButton>
+                        
                     </Box>
 
-                    <p>{content}</p>
+                    <Typography sx={{
+                        lineHeight: '1.4rem',
+                        pt: '1rem',
+                        color: '#c4c4cc',
+                    }}>{content}</Typography>
                 </Box>
             
-                <footer>
-                    <button onClick={handleLikeComment}>
-                        <ThumbsUpDown/>
-                        Like <Circle/> <span> {likeCount}</span>
-                    </button>
-                    <button onClick={handleDislikeComment}>
-                        <ThumbsUpDown/>
-                        Dislike <Circle/> <span> {DislikeCount}</span>
-                    </button>
-                </footer>
+                <Box>
+                    <Button onClick={handleLikeComment}>
+                        <ThumbUp sx={{
+                            mx: '0.5rem'
+                        }}/>
+                        Curti <Typography sx={{
+                            mx: '0.5rem'
+                        }}> {likeCount}</Typography>
+                    </Button>
+                    <Button onClick={handleDislikeComment}>
+                        <ThumbDown sx={{
+                            mx: '0.5rem'
+                        }}/>
+                        Não Curti <Typography  sx={{
+                            mx: '0.5rem'
+                        }}> {DislikeCount}</Typography>
+                    </Button>
+                </Box>
 
             </Box>
 

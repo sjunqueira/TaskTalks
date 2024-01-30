@@ -9,7 +9,10 @@ import { Box, IconButton } from "@mui/material";
 
 
 export default function MyApp(props: AppProps) {
+
   const { Component, pageProps } = props;
+
+
   return (
     <AppCacheProvider {...props}>
       <Head>
