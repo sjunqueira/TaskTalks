@@ -3,13 +3,14 @@ import { useRouter } from "next/router"
 import ResponsiveAppBar from "@/pages/components/ResponsiveAppBar"
 import { ProfileInfo } from "@/pages/components/ProfileInfo"
 import { Post } from "@/pages/components/Post"
+import Layout from "../components/layout"
 
 export default function Forum() {
   const {query} = useRouter()
 
   return (
+    <Layout>
       <Box>
-        <ResponsiveAppBar/>
         <Box sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -20,6 +21,7 @@ export default function Forum() {
 
         </Box>
       </Box>
+    </Layout>
     )
 }
 

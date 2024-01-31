@@ -7,19 +7,6 @@ import { Comment } from './CommentComponent'
 
 const posts = [
   {
-    id: 1,
-    author:{
-      avatarUrl: 'https://media.licdn.com/dms/image/D4D03AQEjMnQLn6rNWA/profile-displayphoto-shrink_400_400/0/1691446946473?e=1698883200&v=beta&t=Q_bjGptrvV2zEaXjU-3FXFb5UUkFfvv45UYAllk66us',
-      name: 'Sergio Junqueira',
-      role: 'Web Developer',
-    },
-    content: [
-      { type: 'paragraph', content: 'Cara, muito massa isso, esse é o primeiro paragrafo dinâmico'}, 
-      { type: 'paragraph', content: 'Já esse aqui é o segundo paragrafo dinamico e que pode estar vindo do banco de dados'},
-      { type: 'link', content: 'github.com/sjunqueira'},
-    ],
-  },
-  {
     id: 2,
     author:{
       avatarUrl: 'https:github.com/diego3g.png',
@@ -223,7 +210,7 @@ export function Post({ id, author, content, role }: any) {
           {comments.map(comment => {
             return (
               <Comment 
-                key={comment.id} 
+                key={comment.id} W
                 id={comment.id}
                 content={comment.content} 
                 commentDate={comment.timestamp}
