@@ -12,11 +12,18 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
-const pages = ['Perfil', 'Forum', 'Logout'];
-const settings = ['Perfil', 'Forum', 'Logout'];
+const pages = [
+  {name:'Home', path:'/'}, 
+ {name:'Perfil', path:'/app/profile'},
+ {name:'Forum', path:'/app/forum'},
+ {name:'Logout', path:'/app/login'}]
+const settings = [];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({name, path}: any) {
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -45,7 +52,8 @@ function ResponsiveAppBar() {
                 display: { xs: 'none', md: 'flex' } 
               }}
               alt="logo-tasktalks"
-              src="/logo.svg"/>
+              src="/logo.svg"
+             />
         
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -78,8 +86,11 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page} onClick={() => {
+                  console.log(page.path)
+                }}>
+                  <Typography textAlign="center">{page.name}</Typography>
+                  <Button href={page.path}  />
                 </MenuItem>
               ))}
             </Menu>
@@ -87,7 +98,8 @@ function ResponsiveAppBar() {
           <Box component='img' sx={{
                 width: '5rem',
                 height: '3rem',
-                display: { xs: 'flex', md: 'none' }, mr: 1
+                display: { xs: 'flex', md: 'none' }, 
+                mr: 1
               }}
               alt="logo-tasktalks"
               src="/logo.svg"/>
@@ -109,47 +121,22 @@ function ResponsiveAppBar() {
           >
             
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          
+          <Box sx={{ flexGrow: 1, mr: 2, display: { xs: 'none', md: 'flex', justifyContent: 'right' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => {
+                  console.log(page.path)
+                }}
+                href={page.path}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>

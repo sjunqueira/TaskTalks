@@ -1,14 +1,11 @@
 import { AppBar, Box, Container, Grid } from "@mui/material"
 import { useRouter } from "next/router"
-import ResponsiveAppBar from "@/pages/components/AppBar/ResponsiveAppBar"
-import { Sidebar } from "@/pages/components/Forum/Sidebar/SideBar"
-import { Main } from "@/pages/components/Forum/Main/MainComponent"
+import ResponsiveAppBar from "@/pages/components/ResponsiveAppBar"
+import { ProfileInfo } from "@/pages/components/ProfileInfo"
+import { Post } from "@/pages/components/Post"
 
 export default function Forum() {
   const {query} = useRouter()
-
-
-  
 
   return (
       <Box>
@@ -18,8 +15,8 @@ export default function Forum() {
           justifyContent: 'center',
           p: 2
         }}>
-          <Grid><Sidebar/></Grid>
-          <Grid><Main/></Grid>
+          <Grid><ProfileInfo/></Grid>
+          <Grid><Post/></Grid>
 
         </Box>
       </Box>

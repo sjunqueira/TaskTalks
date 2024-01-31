@@ -70,7 +70,7 @@ const posts = [
   },
 ];
 
-export function Main({ id, author, content, role }: any) {
+export function Post({ id, author, content, role }: any) {
   
   const [comments, setComments] = useState([]) // Const que tem os comentários (comments) e também tem um "listener" que está dentro de uma function (handleCreateNewComment)
   const [newCommentText, setNewCommentText] = useState('') 

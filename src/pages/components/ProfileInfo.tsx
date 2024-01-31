@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import { Edit, EditOutlined, GitHub, Instagram, LinkedIn } from '@mui/icons-material'
 import { Container } from '@mui/system'
 
-export function Sidebar() {
+export function ProfileInfo() {
     return (
       <Container>
       <Box>
