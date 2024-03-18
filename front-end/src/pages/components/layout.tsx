@@ -7,7 +7,7 @@ export default function Layout({children}) {
     <>
         <ResponsiveAppBar/>
         <main>{children}</main>
-        Teste
+        
     </>
   )
 }

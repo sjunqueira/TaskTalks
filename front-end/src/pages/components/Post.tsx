@@ -2,69 +2,93 @@
 
 import { Avatar, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Comment } from './CommentComponent'
+import BasicModal from './Modal'
+import { ProfileInfo } from './ProfileInfo'
 
-const posts = [
-  {
-    id: 2,
-    author:{
-      avatarUrl: 'https:github.com/diego3g.png',
-      name: 'Diego Fernandes',
-      role: 'CTO @ Rocketseat',
-    },
-    content: [
-      { type: 'paragraph', content: "Lorem ipsum dolor sit asamet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
-      { type: 'paragraph', content: "Lorem ipsum dolor sit amet consectetur adipisicing ggelit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
-      { type: 'link', content: "github.com/diego3g"},
-    ],
-  },
-  {
-    id: 3,
-    author:{
-      avatarUrl: 'https://i.pinimg.com/280x280_RS/c2/ab/8c/c2ab8c97da11e62187a755092a8e9da9.jpg',
-      name: 'Priscila Silva',
-      role: 'Meu amor e mãe do Bento',
-    },
-    content: [
-      { type: 'paragraph', content: "Lorem ipsum dolor sit aasmet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
-      { type: 'paragraph', content: "Lorem ipsum dolor sit amdaet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
-      { type: 'paragraph', content: "Lorem ipsum dolor sit amddet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
-      { type: 'link', content: "instagram.com/okprih"}
-    ],
-  },
-  {
-    id: 4,
-    author:{
-      avatarUrl: 'https://i.pinimg.com/564x/31/b5/8e/31b58eea2f8456733c2a6a0410ae729d.jpg',
-      name: 'Bento Junqueira',
-      role: 'Filho safado',
-    },
-    content: [
-      { type: 'paragraph', content: "Lorem ipsum dolor sit amet asdconsectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", }
-    ],
-  },
-  {
-    id: 5,
-    author:{
-      avatarUrl: 'https://i.pinimg.com/280x280_RS/c2/ab/8c/c2ab8c97da11e62187a755092a8e9da9.jpg',
-      name: 'Priscila Silva',
-      role: 'Meu amor e mãe do Bento',
-    },
-    content: [
-      { type: 'paragraph', content: "Lorem ipsum dolor sit amedt consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", }
-    ],
-  },
-];
 
-export function Post({ id, author, content, role }: any) {
+
+export function Post() {
+
+  const [posts, setPosts] = useState([
+    {
+      id: 2,
+      author:{
+        avatarUrl: 'https:github.com/diego3g.png',
+        name: 'Diego Fernandes',
+        role: 'CTO @ Rocketseat',
+      },
+      content: [
+        { type: 'paragraph', content: "Lorem ipsum dolor sit asamet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
+        { type: 'paragraph', content: "Lorem ipsum dolor sit amet consectetur adipisicing ggelit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
+        { type: 'link', content: "github.com/diego3g"},
+      ],
+      comments: []
+    },
+    {
+      id: 3,
+      author:{
+        avatarUrl: 'https://i.pinimg.com/280x280_RS/c2/ab/8c/c2ab8c97da11e62187a755092a8e9da9.jpg',
+        name: 'Priscila Silva',
+        role: 'Meu amor e mãe do Bento',
+      },
+      content: [
+        { type: 'paragraph', content: "Lorem ipsum dolor sit aasmet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
+        { type: 'paragraph', content: "Lorem ipsum dolor sit amdaet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
+        { type: 'paragraph', content: "Lorem ipsum dolor sit amddet consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", },
+        { type: 'link', content: "instagram.com/okprih"}
+      ],
+      comments: []
+
+    },
+    {
+      id: 4,
+      author:{
+        avatarUrl: 'https://i.pinimg.com/564x/31/b5/8e/31b58eea2f8456733c2a6a0410ae729d.jpg',
+        name: 'Bento Junqueira',
+        role: 'Filho safado',
+      },
+      content: [
+        { type: 'paragraph', content: "Lorem ipsum dolor sit amet asdconsectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", }
+      ],
+      comments: []
+
+    },
+    {
+      id: 5,
+      author:{
+        avatarUrl: 'https://i.pinimg.com/280x280_RS/c2/ab/8c/c2ab8c97da11e62187a755092a8e9da9.jpg',
+        name: 'Priscila Silva',
+        role: 'Meu amor e mãe do Bento',
+      },
+      content: [
+        { type: 'paragraph', content: "Lorem ipsum dolor sit amedt consectetur adipisicing elit. Cum, illum consequuntur? Ex debitis, illum quos nisi ducimus aspernatur dolorum a eius iste fugit molestias corporis consectetur ut ab sit repudiandae?", }
+      ],
+      comments: []
+
+    },
+  ]);
+
   
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+  function handleNewPost(newPost) {
+    setPosts([newPost, ...posts]); // Adiciona o novo post ao estado dos posts
+    handleClose()
+
+  }
+
+
   const [comments, setComments] = useState([]) // Const que tem os comentários (comments) e também tem um "listener" que está dentro de uma function (handleCreateNewComment)
   const [newCommentText, setNewCommentText] = useState('') 
   
   function handleNewCommentChange() { //Function que fica vendo se o comentário está sendo modificado
     event.target.setCustomValidity('')
     setNewCommentText(event.target.value) //Altera o CommentText para o que está na textarea
+    console.log(newCommentText)
   } 
 
   function handleCreateNewComment() { //function que lida com a parte de criacao do novo comentário
@@ -72,7 +96,7 @@ export function Post({ id, author, content, role }: any) {
 
     const currentTime = new Date();
     const newComment = {
-      id: comments.length + 1, // Ou você pode usar alguma lógica para gerar IDs únicos
+      id: new Date().getTime(), // Ou você pode usar alguma lógica para gerar IDs únicos
       content: newCommentText,
       timestamp: currentTime,
     };
@@ -87,7 +111,7 @@ export function Post({ id, author, content, role }: any) {
       // Verifica se a tecla pressionada é "Enter" sem a tecla Shift
       handleCreateNewComment(event);
 
-      console.log(comments)
+      //console.log(comments)
 
       event.target.blur()
     }
@@ -104,15 +128,24 @@ export function Post({ id, author, content, role }: any) {
  
   }
 
-  console.log("posts:", posts);
-  console.log(posts)
-  console.log(comments)
+  //console.log("posts:", posts);
+  //console.log(posts)
+  //console.log(comments)
   const isNewCommentEmpty = newCommentText.length == 0
 
     return (
       <Box sx={{
         width: '100vh',
       }}>
+        <Button variant='contained' sx={{
+        width: 1,
+        p: '1rem',
+        mb: '1rem',
+        borderRadius:3
+        }}
+        onClick={handleOpen}>
+        Criar novo post</Button>
+        <BasicModal open={open} handleClose={handleClose} onNewPost={handleNewPost} />
         
         {posts.map((post) => (
           <Paper
@@ -183,7 +216,7 @@ export function Post({ id, author, content, role }: any) {
               }} fullWidth label="" id="fullWidth"
               placeholder="Deixe um comentário"
               value={newCommentText}
-              onChange={handleNewCommentChange}
+              onChange={(event) => handleNewCommentChange(post.id, event)}
               onKeyDown={handleEnterPress}
               onSubmit={handleCreateNewComment}
               multiline
@@ -200,7 +233,7 @@ export function Post({ id, author, content, role }: any) {
                   visibility: 'visible',
                 }}
               }
-              onClick={handleCreateNewComment}
+              onClick={() => handleCreateNewComment(post.id)}
               disabled={isNewCommentEmpty}>
                 Comentar</Button>
             </Grid>
@@ -210,7 +243,7 @@ export function Post({ id, author, content, role }: any) {
           {comments.map(comment => {
             return (
               <Comment 
-                key={comment.id} W
+                key={comment.id} 
                 id={comment.id}
                 content={comment.content} 
                 commentDate={comment.timestamp}
@@ -219,6 +252,9 @@ export function Post({ id, author, content, role }: any) {
             )
           })}
         </Box>
+
+              
+
       
         </Paper>
         ))}

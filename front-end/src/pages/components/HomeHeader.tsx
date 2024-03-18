@@ -3,10 +3,11 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
+import { Menu, MenuItem } from '@mui/material';
 
 export default function Header() {
   return (
-    <Box component="header" className="absolute w-full z-30">
+    <Container component="header" className="absolute w-full z-30">
       <Container maxWidth="6xl" sx={{ px: 4, sm: { px: 6 }, height: 20 }}>
         <Box
           sx={{
@@ -31,26 +32,20 @@ export default function Header() {
           </Box>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
-            {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
-                <Link href="/app/login" passHref>
-                    Sign in
-                </Link>
-              </li>
-              <li>
-                <Link href="/app/login" passHref>
-                  <Button component="a" variant="contained" color="primary" sx={{ ml: 3 }}>
-                    Sign up
-                  </Button>
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          
+
+          <Button sx={{
+            mt: 5, 
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#fff'
+            }
+          }}
+          variant="text" href='login'>Login</Button>
+          
 
         </Box>
       </Container>
-    </Box>
+    </Container>
   );
 }

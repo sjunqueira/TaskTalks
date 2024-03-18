@@ -1,10 +1,15 @@
-import { Avatar, Button } from '@mui/material'
+import { Autocomplete, Avatar, Button, Chip, Modal, TextField, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
+import * as React from 'react'
 
 import { Edit, EditOutlined, GitHub, Instagram, LinkedIn } from '@mui/icons-material'
 import { Container } from '@mui/system'
 
+
+//A partir daqui está OK
 export function ProfileInfo() {
+
+
     return (
       <Container>
       <Box>
@@ -62,13 +67,6 @@ export function ProfileInfo() {
         </Box>
         </Box>
       
-      <Button variant='contained' sx={{
-        width: 1,
-        p: '1rem',
-        my: '0.5rem',
-        borderRadius:3
-        }}>
-        Criar novo post</Button>
       </Box>
       </Container>
     )

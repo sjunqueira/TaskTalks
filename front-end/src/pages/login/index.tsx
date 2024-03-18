@@ -29,13 +29,23 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
+    try {
+      const success = await login(email, password); // Chame a função de login com o email e a senha
+      if (success) {
+        // Redirecione para a página após o login bem-sucedido
+        // Por exemplo: window.location.href = '/dashboard';
+        console.log('Login bem-sucedido');
+      } else {
+        console.error('Credenciais inválidas');
+      }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+    }
   };
 
   return (
